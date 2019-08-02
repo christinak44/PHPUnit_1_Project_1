@@ -1,2 +1,2 @@
-# PHPUnit_1_Project_1
+# PHP_Unit 1 Project_1
  1st TechDegree project
