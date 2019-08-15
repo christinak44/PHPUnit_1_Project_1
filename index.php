@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include 'functions.php';?>
+<?php include 'inc/functions.php';?>
 <?php $test = 'Font color and background apply?'; ?>
 <html lang="en">
 <head>
