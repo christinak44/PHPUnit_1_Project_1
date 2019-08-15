@@ -42,80 +42,36 @@ $quotes[] = array(
   'citation' => 'The Simpsons, Season 14, EP 15',
   'year' => 2003
 );
-//$defaultQuote = $quotes[0];
-//$randQuote = $quotes;
-$randKey = rand(1,4);
-
-//echo $randKey;
-
+//randomly select array key and associated quote w/ elements
 function getRandomQuote($quotes){
-  global $randKey;
   global $quotes;
-  //global $defaultQuote;
-    // echo $randKey;
-     switch($randKey){
-
-       case "0":
-   print_r ($quotes[0]);
-
-     break;
-       case "1":
-   print_r ($quotes[1]);
-
-     break;
-       case "2":
-   print_r ($quotes[2]);
-
-     break;
-       case "3":
-   print_r ($quotes[3]);
-
-     break;
-       case "4":
-   print_r ($quotes[4]);
-
-     break;
-     }
-
+return $quotes[array_rand($quotes)];
 }
-$func = 'getRandomQuote';
-$quoteOnDeck = $func($quotes);
-
+//display appointed 'quote on deck'. If statements will ensure blank elements are suppressed.;
 function printQuote($quoteOnDeck){
-global $quoteOnDeck;
-
- $DisplayQuote = '';
+global $quotes;
+$quoteOnDeck = getRandomQuote($quotes);
+$DisplayQuote = '';
   if($quoteOnDeck['citation'] == Null){
-$DisplayQuote =
-"<p class="quote"> $quoteOnDeck['quote'] </p>"
-"<p class="source"> $quoteOnDeck['source']
-   <span class="year"> $quoteOnDeck['year'] </span>
-</p>";
+$DisplayQuote = '<p class="quote">' . $quoteOnDeck['quote'] . '</p>';
+$DisplayQuote .= '<p class="source">' . $quoteOnDeck['source'] .
+   '<span class="year">' . $quoteOnDeck['year'] . '</span>
+</p>';
   }elseif($quoteOnDeck['year'] == Null){
-$DisplayQuote =
-"<p class="quote"> $quoteOnDeck['quote'] </p>"
-"<p class="source"> $quoteOnDeck['source']
-   <span class="citation"> $quoteOnDeck['citation'] </span>
-</p>";
+$DisplayQuote = '<p class="quote">' . $quoteOnDeck['quote'] . '</p>';
+$DisplayQuote .= '<p class="source">' . $quoteOnDeck['source'] .
+   '<span class="citation">' . $quoteOnDeck['citation'] . '</span>
+</p>';
   }elseif($quoteOnDeck['year'] && ['citation'] == Null){
-$DisplayQuote =
-"<p class="quote"> [quote here] </p>"
-"<p class="source"> [source here]</p>";
+$DisplayQuote = '<p class="quote">' . $quoteOnDeck['quote'] . '</p>';
+$DisplayQuote .= '<p class="source">' . $quoteOnDeck['source'] . '</p>';
   }else {
-$DisplayQuote =
-"<p class="quote"> $quoteOnDeck['quote'] </p>"
-"<p class="source"> $quoteOnDeck['source']
-  <span class="citation"> $quoteOnDeck['citation'] </span>
-  <span class="year"> $quoteOnDeck['year'] </span>
-</p>";
+$DisplayQuote = '<p class="quote">' . $quoteOnDeck['quote'] .'</p>';
+$DisplayQuote .= '<p class="source">' . $quoteOnDeck['source'] .
+  '<span class="citation">' . $quoteOnDeck['citation'] . '</span>' .
+  '<span class="year">' . $quoteOnDeck['year'] . '</span>
+</p>';
   }
+echo $DisplayQuote;
 }
-?>
-
-
-
-// Create the getRandomQuuote function and name it getRandomQuote
-
-
-
-// Create the printQuote funtion and name it printQuote
+printQuote($quotes);
