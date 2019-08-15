@@ -54,6 +54,17 @@ body {
   content: "—";
 }
 
+.type {
+  font-style: italic;
+  color: #FFF033;
+}
+
+.type:before {
+  content: ", ";
+  font-style: normal;
+  color: white;
+}
+
 .citation {
   font-style: italic;
 }
